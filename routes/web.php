@@ -19,13 +19,38 @@ Route::get('/danh-muc/{id}', 'FrontController@category')->name('customer.categor
 Route::get('/tat-ca-san-pham', 'FrontController@all_category')->name('customer.all_category');
 Route::get('giam-gia', 'FrontController@discount')->name('customer.discount');
 
+Route::get('/checkout', 'FrontController@checkout')->name('customer.checkout');
+Route::post('/postOrder', 'CustomerController@postOrder')->name('customer.postOrder');
+
+Route::get('/customer_login', 'FrontController@login')->name('customer.login');
+Route::post('/customer_login', 'CustomerController@postLogin')->name('customer.postLogin');
+Route::get('/customer_register', 'FrontController@register')->name('customer.register');
+Route::post('/customer_register', 'CustomerController@store')->name('customer.store');
+Route::get('/customer_update', 'CustomerController@edit')->name('customer.edit');
+Route::post('/customer_update', 'CustomerController@update')->name('customer.update');
+Route::get('/changePassword', 'CustomerController@changePassword')->name('customer.changePassword');
+Route::post('/changePassword', 'CustomerController@updatePassword')->name('customer.updatePassword');
+
+Route::get('/Add_to_cart', 'CartController@Add_to_cart')->name('Add_to_cart');
+Route::get('/Remove_item', 'CartController@Remove_item')->name('Remove_item');
+Route::get('/UpdateAmount', 'CartController@UpdateAmount')->name('UpdateAmount');
+Route::get('clear', 'CartController@clear')->name('clear');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login', 'CustomerController@admingetLogin')->name('getlogin');
+Route::post('/loginAdmin', 'CustomerController@adminpostLogin')->name('login');
 
 
 Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
+
+    // modulle warehouse
+    Route::prefix('warehouse')->group(function () {
+        Route::get('/', 'WarehouseController@index')->name('warehouse.index');
+        Route::get('/create', 'WarehouseController@create')->name('warehouse.add');
+        Route::post('/create', 'WarehouseController@store')->name('warehouse.store');
+    });
 
     // module discount
     Route::prefix('discount')->group(function () {

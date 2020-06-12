@@ -29,6 +29,8 @@ class FrontController extends Controller
         $listSupplier = $this->supplier->all();
         $listItem = $this->item->all();
 
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
         // lấy giữ liệu trong item
         if ( count( $listItem) < 4) {
             $carousel_item = DB::table('item')
@@ -96,10 +98,12 @@ class FrontController extends Controller
                 ->limit(4)
                 ->get();
 
-        return view('user.index', compact('listItem', 'listSupplier', 'carousel_item', 'most_Supplier', 'most_Item', 'sugges_Item', 'discount_Item', 'best_sale_Item'));
+        return view('user.index', compact('listItem', 'listSupplier', 'carousel_item', 'most_Supplier', 'most_Item', 'sugges_Item', 'discount_Item', 'best_sale_Item', 'amount_item'));
     }
 
     public function all_category(){
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
         $listSupplier = $this->supplier->all();
 
         // sản phẩm Giảm Giá nhất
@@ -118,10 +122,12 @@ class FrontController extends Controller
         $title = 'Tất cả sản phẩm';
 
 // dd($listItem);
-        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'title'));
+        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'title', 'amount_item'));
     }
 
     public function discount(){
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
         $listSupplier = $this->supplier->all();
 
         // sản phẩm Giảm Giá nhất
@@ -142,10 +148,12 @@ class FrontController extends Controller
         $title = 'Sản Phẩm Giảm Giá';
 
 // dd($listItem);
-        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'title'));
+        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'title', 'amount_item'));
     }
 
     public function category($id){
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
         $listSupplier = $this->supplier->all();
 
         // sản phẩm Giảm Giá nhất
@@ -176,11 +184,13 @@ class FrontController extends Controller
 	    ]);
 
 // dd($this_supplier);
-        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'this_supplier' ,'title'));
+        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'this_supplier' ,'title', 'amount_item'));
     }
 
     public function item($id){
 
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
         $listSupplier = $this->supplier->all();
 
     	// lấy ra sản phẩm
@@ -213,8 +223,75 @@ class FrontController extends Controller
 	    $this->item->where('id', $id)->update([
 	        'item_view' => $this_view,
 	    ]);
+        // biến kiếm tra đã tồn tại sản phẩm trong giỏ hàng
+        $has_item = false;
+        $value_item = 1;
+        // kiểm tra item đã tồn tại trong giỏ hàng hay chưa 
+        if (Session('cart')) {
+            foreach (Session::get('cart')->items as $key => $value) {
+                if ($value['id'] == $item->id) {
+                   $has_item = true;
+                   $value_item = $value['qty'];
+                }
+            }
+        }
 
-    	// dd($item);
-        return view('user.item', compact('most_sell_Item', 'listSupplier', 'item', 'item_same'));
+    	// dd($value_item);
+        return view('user.item', compact('most_sell_Item', 'listSupplier', 'item', 'item_same', 'has_item', 'value_item', 'amount_item'));
+    }
+
+    public function checkout(){
+
+
+        $listSystem = $this->system->all();
+        $listSupplier = $this->supplier->all();
+        $listItem = $this->item->all();
+
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
+
+        // lấy giữ liệu trong category
+        $listSupplier = $this->supplier->all();
+
+        // nếu đã tồn tại giỏ hàng, lấy sản phẩm trong giỏ hàng, hoặc trả về null
+        $cart = Session('cart') ? Session::get('cart')->items : null;
+        // dd($cart);
+        $item = null;
+        $total_qty = 0;
+        if ($cart != null) {
+            foreach ($cart as $key => $value) {
+                $item[$key]['data'] = DB::table('item')->where('id', '=', $value['id'])->first();
+                $item[$key]['prices'] = $item[$key]['data']->item_price - ($item[$key]['data']->item_price * $item[$key]['data']->item_discount / 100);
+                $item[$key]['value'] = $value['qty'];
+                $total_qty += $item[$key]['prices'] * $item[$key]['value'];
+            }
+            // dd($total_qty);
+        }
+        // dd($cart);
+        return view('user.order', compact('listSupplier', 'amount_item', 'item', 'total_qty'));
+    }
+    public function login(){
+
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
+
+        $listSystem = $this->system->all();
+        $listSupplier = $this->supplier->all();
+        $listItem = $this->item->all();
+
+        return view('user.login', compact('listSupplier', 'amount_item'));
+    }
+    
+    public function register(){
+
+
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
+
+        $listSystem = $this->system->all();
+        $listSupplier = $this->supplier->all();
+        $listItem = $this->item->all();
+
+        return view('user.register', compact('listSupplier', 'amount_item'));
     }
 }

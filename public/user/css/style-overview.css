@@ -13,7 +13,7 @@ body {
     font-family: 'Montserrat', 'poppins', 'Noto Sans', sans-serif;
     background-color: #fff;
     font-family: 'Josefin Sans';
-    background: url(../images/header_bg.png);
+    /*background: url(../images/header_bg.png);*/
     background-size: cover;
 }
 a{

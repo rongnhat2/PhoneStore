@@ -284,8 +284,39 @@ main{
 .I-collections{
     display: none;
 }
+.I-form{
+    width: 100%;
+    padding: 50px;
+}
 
-
+/*.I-order .order_wrapper{
+    height: auto;
+    overflow: hidden;
+}
+.I-order .order_wrapper .calc_item{
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+.I-order .order_wrapper .calc_item .down_calc{ }
+.I-order .order_wrapper .calc_item .val_calc{ }
+.I-order .order_wrapper .calc_item .up_calc{ }
+.I-order .order_wrapper a{ }
+.I-order .order_wrapper a:hover{ }
+.I-order .order_wrapper a.is-close{ }
+.I-order .order_wrapper a.is-close:hover{ }
+.I-order .order_wrapper .cart_item{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.I-order .order_wrapper .order_item{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+*/
 
 }
 

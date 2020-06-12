@@ -17,7 +17,7 @@
 									<div class="item_name">
 										<?php echo $item->item_name ?>
 									</div>
-									<div class="item_price">
+									<div class="item_price" value="{{ ($item->item_discount != 0) ? ($item->item_price - ($item->item_price  * $item->item_discount / 100)) : ($item->item_price) }}">
 										@if ( $item->item_discount != 0 )
 											<?php echo number_format($item->item_price - ($item->item_price  * $item->item_discount / 100)). " đ" ?> 
 											<span class="discount"><?php echo number_format($item->item_price). " đ" ?> </span>
@@ -61,9 +61,13 @@
 										</div>
 									</div>
 									<div class="item_cart">
-										<input type="number" name="" min="0">
-										<a href="" class="add_to_cart">
-											<i class="fas fa-shopping-cart"></i>
+										<input type="number" name="" min="1" class="value_input" value="<?php echo $value_item ?>" {{ $has_item ? 'readonly' : ''}}>
+										<a class="{{ $has_item ? '' : 'add_more_to_cart'}}" id_cart="<?php echo $item->id ?>">
+											<?php if ($has_item): ?>
+												<i class="fas fa-check"></i>
+											<?php else: ?>
+												<i class="fas fa-shopping-cart"></i>
+											<?php endif ?>
 										</a>
 									</div>
 									<div class="item_detail">
@@ -126,6 +130,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="{{ asset('user/js/add_to_cart.js') }}"></script>
 @endsection()
 
 
