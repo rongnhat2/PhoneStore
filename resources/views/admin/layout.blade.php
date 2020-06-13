@@ -88,6 +88,11 @@
 								</a>
 							</div>
 							<div class="item_nav">
+								<a href="/guarantee" class="link_nav" title="Bảo Hành">
+									<i class="fas fa-wrench"></i>
+								</a>
+							</div>
+							<div class="item_nav">
 								<div class="link_nav">
 									<i class="fas fa-shipping-fast"></i>
 								</div>

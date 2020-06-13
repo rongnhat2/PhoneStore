@@ -48,7 +48,7 @@ class ItemController extends Controller
             // Insert data to user table
             $itemCreate = $this->item->create([
                 'item_code' => $request->item_code,
-                'item_guarantee' => '0',
+                'item_guarantee' =>  $request->item_guarantee,
                 'item_name' => $request->item_name,
                 'image_id' => $request->image_id,
                 'system_id' => $request->system_id,

@@ -11,14 +11,24 @@
 					</div>
 				</div>
 				<table class="table table-bordered" id="myTable">
+			    	<thead class="search_table">
+			      		<tr>
+					        <th></th>
+					        <th></th>
+					        <th class="input"><input type="" name=""></th>
+					        <th></th>
+					        <th class="input"><input type="date" name=""></th>
+					        <th colspan="2"><button class="search_button ship">Tìm Kiếm</button></th>
+				      	</tr>
+			    	</thead>
 			    	<thead>
 			      		<tr>
-					        <th onclick="sortListDir(0, 1)">ID</th>
-					        <th onclick="sortListDir(1, 1)">Tên</th>
-					        <th onclick="sortListDir(2, 1)">Số Điện Thoại</th>
-					        <th onclick="sortListDir(3, 1)">Địa Chỉ</th>
-					        <th onclick="sortListDir(4, 1)">Thời Gian</th>
-					        <th onclick="sortListDir(5, 1)">Trạng Thái</th>
+					        <th onclick="sortListDir(0, 2)">ID</th>
+					        <th onclick="sortListDir(1, 2)">Tên</th>
+					        <th onclick="sortListDir(2, 2)">Số Điện Thoại</th>
+					        <th onclick="sortListDir(3, 2)">Địa Chỉ</th>
+					        <th onclick="sortListDir(4, 2)">Thời Gian</th>
+					        <th onclick="sortListDir(5, 2)">Trạng Thái</th>
 					        <th>Chi Tiết</th>
 				      	</tr>
 			    	</thead>
@@ -46,7 +56,7 @@
 								<?php endif ?>
 					        </td>
 					        <td>
-					        	<a href="{{ route('shipall.edit', ['id' => $item->id]) }}" class="action_table">
+					        	<a href="{{ route('guarantee.edit', ['id' => $item->id]) }}" class="action_table">
 					        		<i class="far fa-edit"></i>
 					        	</a>
 					        </td>

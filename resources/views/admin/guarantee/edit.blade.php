@@ -16,10 +16,10 @@
 					        <th onclick="sortListDir(0, 1)">ID</th>
 					        <th onclick="sortListDir(1, 1)">Tên Hàng</th>
 					        <th onclick="sortListDir(2, 1)">Số Lượng</th>
-					        <th onclick="sortListDir(3, 1)">Đơn Giá</th>
 					        <th onclick="sortListDir(4, 1)">Thành Tiền</th>
 					        <th onclick="sortListDir(5, 1)">Ngày Đặt</th>
-					        <th onclick="sortListDir(6, 1)">Trạng Thái</th>
+					        <th onclick="sortListDir(6, 1)">Bảo Hành Đến</th>
+					        <th onclick="sortListDir(7, 1)">Trạng Thái</th>
 				      	</tr>
 			    	</thead>
 			    	<tbody class="list_output">
@@ -28,20 +28,20 @@
 					        <td>{{ $loop->index + 1 }}</td>
 					        <td>{{ $item->item_name }}</td>
 					        <td>{{ $item->amounts }}</td>
-					        <td>{{ number_format($item->unit_price) }}</td>
 					        <td>{{ number_format($item->total_price) }}</td>
 					        <td>{{ $item->created_at }}</td>
+					        <td>{{ $item->item_guarantee }}</td>
 					        <td>
-								<?php if ($item->amounts < $item->item_amount): ?>
-						        	<div class="status_table bg_success text_light">
-						        		Còn Hàng
-						        	</div>
-								<?php else: ?>
+								<?php if ($now > $item->item_guarantee): ?>
 						        	<div class="status_table bg_danger text_light">
-						        		Hết Hàng
+						        		Hết Hạn
+						        	</div>
+								<?php else:?>
+						        	<div class="status_table bg_success text_light">
+						        		Bảo Hành
 						        	</div>
 								<?php endif ?>
-					        </td>
+							</td>
 				      	</tr>
                 		@endforeach
 			    	</tbody>
@@ -49,8 +49,6 @@
 				<div class="input_wrapper">
 					<div class="input_button">
 						<div>Tổng = <?php echo number_format($total) ?></div>
-					  	<a href="{{ route('ship.remove', ['id' => $id]) }}" class="I-button bg_danger text_light" style="float: right;margin: 0 0 0 10px">Hủy</a>
-					  	<a href="{{ $check_item ? route('ship.success', ['id' => $id]) : '#' }}" class="I-button bg_success text_light" style="float: right;margin: 0 0 0 10px">Xác Nhận</a>
 					</div>
 				</div>
 			</div>

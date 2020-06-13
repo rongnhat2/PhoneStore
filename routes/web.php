@@ -45,6 +45,28 @@ Route::post('/loginAdmin', 'CustomerController@adminpostLogin')->name('login');
 
 Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
 
+    // modulle guarantee
+    Route::prefix('guarantee')->group(function () {
+        Route::get('/', 'GuaranteeController@index')->name('guarantee.index');
+        Route::get('/edit/{id}', 'GuaranteeController@edit')->name('guarantee.edit');
+    });
+
+    // modulle allship
+    Route::prefix('allship')->group(function () {
+        Route::get('/', 'ShipController@allshipindex')->name('allship.index');
+        Route::get('/edit/{id}', 'ShipController@allshipedit')->name('shipall.edit');
+    });
+
+    // modulle ship
+    Route::prefix('ship')->group(function () {
+
+        Route::get('/', 'ShipController@index')->name('ship.index');
+        Route::get('/edit/{id}', 'ShipController@edit')->name('ship.edit');
+        Route::get('/success/{id}', 'ShipController@success')->name('ship.success');
+        Route::get('/remove/{id}', 'ShipController@remove')->name('ship.remove');
+        Route::get('getShip', 'ShipController@getShip')->name('ship.getShip');
+    });
+
     // modulle warehouse
     Route::prefix('warehouse')->group(function () {
         Route::get('/', 'WarehouseController@index')->name('warehouse.index');

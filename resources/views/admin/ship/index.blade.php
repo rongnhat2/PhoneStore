@@ -36,7 +36,7 @@
 				      	<tr class="item_output">
 					        <td>{{ $loop->index + 1 }}</td>
 					        <td>{{ $item->name }}</td>
-					        <td>{{ $item->phone }}</td>
+					        <td>{{ $item->telephone }}</td>
 					        <td>{{ $item->address }}</td>
 					        <td>{{ $item->created_at }}</td>
 					        <td>

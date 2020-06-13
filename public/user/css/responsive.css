@@ -209,6 +209,37 @@ main{
     color: #FFDC00; 
 }
 
+.I-order{
+    padding: 10px 0;
+}
+.I-order .calc_item{ }
+.I-order .calc_item .down_calc{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.I-order .calc_item .val_calc{
+    width: 40px;
+    margin: 0 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+.I-order .calc_item .up_calc{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
 
 .I-respon_nav .action_wrapper{
     position: absolute;

@@ -60,7 +60,7 @@
 								        </td>
 								        <td class="single_price" value="<?php echo $value['prices'] ?>"><?php echo number_format($value['prices']) . " Đồng" ?></td>
 								        <td class="count_prices"><?php echo number_format($value['prices'] * $value['value']) . " Đồng" ?></td>
-								        <td><a class="open_remove" data-toggle="modal" data-target="#myModal">Xóa</a></td>
+								        <td><a class="open_remove" data-toggle="modal" data-target="#myModal"><i class="far fa-trash-alt"></i></a></td>
 								    	<input type="hidden" name="item[]" value="<?php echo $value['data']->id ?>" class="data_id">
 								    	<input type="hidden" name="amount[]" value="<?php echo $value['value'] ?>" class="data_amount">
 							      	</tr>

@@ -20,6 +20,7 @@ class SubOrder extends Migration
             $table->integer('amounts');
             $table->integer('unit_price');
             $table->integer('total_price');
+            $table->string('item_guarantee');
             $table->timestamps();
         });
     }

@@ -75,10 +75,10 @@ function ship(data){
             '<tr class="item_output">'                      +
             '    <td>'+ (i - -1) +'</td>'                   +
             '    <td>'+ data[i].name +'</td>'           +
-            '    <td>'+ data[i].phone +'</td>'          +
+            '    <td>'+ data[i].telephone +'</td>'          +
             '    <td>'+ data[i].address +'</td>'               +
             '    <td>'+ data[i].created_at +'</td>'           +
-            '    <td><a href="/item/edit/'+ data[i].id +'" class="action_table"> <i class="far fa-edit"></i> </a></td>'         +
+            '    <td><a href="/ship/edit/'+ data[i].id +'" class="action_table"> <i class="far fa-edit"></i> </a></td>'         +
             '</tr> '                              
         );
     }  

@@ -71,7 +71,6 @@
 		                                Đăng Xuất
 		                            </a>
 	                        	@endguest
-								<a href="">Thanh Toán</a>
 							</div>
 						</div>
 						<a href="{{ route('customer.checkout') }}" class="cart_wrapper">
@@ -95,9 +94,9 @@
 				<div class="sub_nav">
 					<div class="nav_wrapper">
 						<ul>
-							<li><a href="#">Trang Chủ</a></li>
+							<li><a href="{{ route('customer.index') }}">Trang Chủ</a></li>
 							<li class="sub_menu_wrapper">
-								<a href="#">Danh Mục Sản Phẩm</a>
+								<a href="{{ route('customer.all_category') }}">Danh Mục Sản Phẩm</a>
 								<div class="sub_menu">
 									<?php foreach ($listSupplier as $key => $value): ?>
 										<a href="{{ route('customer.category', ['id' => $value->id]) }}"><?php echo $value->supplier_name ?></a>
@@ -122,7 +121,7 @@
                             Đăng Xuất
                         </a>
                 	@endguest
-					<a href="">Thanh Toán</a>
+					<a href="{{ route('customer.checkout') }}">Thanh Toán</a>
 				</div>
 			</div>
 			@yield('body')

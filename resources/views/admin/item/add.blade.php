@@ -138,6 +138,14 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
+								Thời Gian Bảo Hàng ( Tháng )
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_guarantee" required="">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
 								Mô Tả Ngắn
 							</div>
 							<div class="input_form">

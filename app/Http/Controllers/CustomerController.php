@@ -11,6 +11,7 @@ use Session;
 use App\Role;
 use App\User;
 use App\Customer;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -247,6 +248,7 @@ class CustomerController extends Controller
     	if(Auth::check()){
             try {
                 // dd($request->item);
+                        // dd(Carbon::now('Asia/Ho_Chi_Minh')->addMonths(6));
                 DB::beginTransaction();
                     $id = DB::table('user_order')->insertGetId([
                         'user_id' => $request->id_user,
@@ -259,14 +261,16 @@ class CustomerController extends Controller
                         $getItem = DB::table('item')->where('item.id', '=', $request->item[$i])->first();
                         $getPrices = $getItem->item_price - ($getItem->item_price * $getItem->item_discount / 100);
                         $getTotalPrices = $request->amount[$i] * $getPrices;
+                        $getGuarantee = $getItem->item_guarantee;
                         DB::table('sub_order')->insert([
                             'order_id' => $id,
                             'item_id' => $request->item[$i],
                             'amounts' => $request->amount[$i],
                             'unit_price' => $getPrices,
                             'total_price' => $getTotalPrices,
-                            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
-                            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+                            'item_guarantee' => Carbon::now('Asia/Ho_Chi_Minh')->addMonths($getGuarantee)->toDateTimeString(),
+                            "created_at"        =>  Carbon::now('Asia/Ho_Chi_Minh'),
+                            "updated_at"        => Carbon::now('Asia/Ho_Chi_Minh'),
                         ]);
                     }
                     Session::forget('cart');
