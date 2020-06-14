@@ -26,16 +26,70 @@ class admin_seed extends Seeder
 	        "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
 	        "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
 	    ]);
-	    DB::table('permissions')->insert([
-	        'name'              => 'users',
-	        'display_name' 			=> 'Quản Lí Nhân Viên',
-	        "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
-	        "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
-	    ]);
+        DB::table('permissions')->insert([
+            'name'              => 'users',
+            'display_name'          => 'Quản Lí Nhân Viên',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'system',
+            'display_name'          => 'Quản Lí Danh Mục',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'gallery',
+            'display_name'          => 'Quản Lí Hình Ảnh',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'item',
+            'display_name'          => 'Quản Lí Sản Phẩm',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'discount',
+            'display_name'          => 'Quản Lí Giảm Giá',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'warehouse',
+            'display_name'          => 'Quản Lí Nhập Kho',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'ship',
+            'display_name'          => 'Quản Lí Đơn Hàng',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'allship',
+            'display_name'          => 'Quản Lí Lịch Sử',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'guarantee',
+            'display_name'          => 'Quản Lí Bảo Hành',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
+        DB::table('permissions')->insert([
+            'name'              => 'statistical',
+            'display_name'          => 'Thống Kê',
+            "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+        ]);
 
         DB::table('users')->insert([
             'name'              => 'admin',
-            'email'             => 'long.nguyen2198@gmail.com',
+            'email'             => 'admin@gmail.com',
             'password'          => Hash::make('12345678'),
             "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
             "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
@@ -52,7 +106,7 @@ class admin_seed extends Seeder
             "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
             "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
         ]);
-        for ($i=1; $i <= 3 ; $i++) { 
+        for ($i=1; $i <= 12 ; $i++) { 
 	        DB::table('role_permission')->insert([
 	            'permission_id'     => $i,
 	            'role_id'      		=> '1',

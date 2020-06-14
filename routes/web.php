@@ -46,24 +46,24 @@ Route::post('/loginAdmin', 'CustomerController@adminpostLogin')->name('login');
 Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
 
     // modulle statistical
-    Route::prefix('statistical')->group(function () {
+    Route::middleware(['checkacl:statistical'])->prefix('statistical')->group(function () {
         Route::get('/', 'StatisticalController@index')->name('statistical.index');
     });
 
     // modulle guarantee
-    Route::prefix('guarantee')->group(function () {
+    Route::middleware(['checkacl:guarantee'])->prefix('guarantee')->group(function () {
         Route::get('/', 'GuaranteeController@index')->name('guarantee.index');
         Route::get('/edit/{id}', 'GuaranteeController@edit')->name('guarantee.edit');
     });
 
     // modulle allship
-    Route::prefix('allship')->group(function () {
+    Route::middleware(['checkacl:allship'])->prefix('allship')->group(function () {
         Route::get('/', 'ShipController@allshipindex')->name('allship.index');
         Route::get('/edit/{id}', 'ShipController@allshipedit')->name('shipall.edit');
     });
 
     // modulle ship
-    Route::prefix('ship')->group(function () {
+    Route::middleware(['checkacl:ship'])->prefix('ship')->group(function () {
 
         Route::get('/', 'ShipController@index')->name('ship.index');
         Route::get('/edit/{id}', 'ShipController@edit')->name('ship.edit');
@@ -73,14 +73,14 @@ Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
     });
 
     // modulle warehouse
-    Route::prefix('warehouse')->group(function () {
+    Route::middleware(['checkacl:warehouse'])->prefix('warehouse')->group(function () {
         Route::get('/', 'WarehouseController@index')->name('warehouse.index');
         Route::get('/create', 'WarehouseController@create')->name('warehouse.add');
         Route::post('/create', 'WarehouseController@store')->name('warehouse.store');
     });
 
     // module discount
-    Route::prefix('discount')->group(function () {
+    Route::middleware(['checkacl:discount'])->prefix('discount')->group(function () {
 
         Route::get('/', 'DiscountController@index')->name('discount.index');
         Route::get('/create', 'DiscountController@create')->name('discount.add');
@@ -89,7 +89,7 @@ Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
     });
 
     // module item
-    Route::prefix('item')->group(function () {
+    Route::middleware(['checkacl:item'])->prefix('item')->group(function () {
 
         Route::get('/', 'ItemController@index')->name('item.index');
         Route::get('/create', 'ItemController@create')->name('item.add');
@@ -101,7 +101,7 @@ Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
     });
 
     // module gallery
-    Route::prefix('gallery')->group(function () {
+    Route::middleware(['checkacl:gallery'])->prefix('gallery')->group(function () {
 
         Route::get('/', 'GalleryController@index')->name('gallery.index');
         Route::get('/create', 'GalleryController@create')->name('gallery.add');
@@ -110,7 +110,7 @@ Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
     });
 
     // module supplier
-    Route::prefix('supplier')->group(function () {
+    Route::middleware(['checkacl:system'])->prefix('supplier')->group(function () {
 
         Route::get('/', 'SupplierController@index')->name('supplier.index');
         Route::get('/create', 'SupplierController@create')->name('supplier.add');
@@ -121,7 +121,7 @@ Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
     });
 
     // module system
-    Route::prefix('system')->group(function () {
+    Route::middleware(['checkacl:system'])->prefix('system')->group(function () {
 
         Route::get('/', 'SystemController@index')->name('system.index');
         Route::get('/create', 'SystemController@create')->name('system.add');
