@@ -54,12 +54,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="search_wrapper">
+						<form class="search_wrapper" id="search-form" action="/item_finded" method="post" enctype="multipart/form-data">
+								{{ csrf_field() }}
 							<div class="search">
-								<input type="" name="">
-								<a href="#"><i class="fas fa-search"></i></a>
+								<input type="" name="item_find">
+								<a href="#" onclick="event.preventDefault(); document.getElementById('search-form').submit();"><i class="fas fa-search"></i></a>
 							</div>
-						</div>
+						</form>
 						<div class="action_wrapper">
 							<div class="action">
 	                        	@guest

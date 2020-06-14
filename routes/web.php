@@ -18,6 +18,7 @@ Route::get('/san-pham/{id}', 'FrontController@item')->name('customer.item');
 Route::get('/danh-muc/{id}', 'FrontController@category')->name('customer.category');
 Route::get('/tat-ca-san-pham', 'FrontController@all_category')->name('customer.all_category');
 Route::get('giam-gia', 'FrontController@discount')->name('customer.discount');
+Route::post('item_finded', 'FrontController@item_finded')->name('customer.finded');
 
 Route::get('/checkout', 'FrontController@checkout')->name('customer.checkout');
 Route::post('/postOrder', 'CustomerController@postOrder')->name('customer.postOrder');

@@ -270,6 +270,33 @@ class FrontController extends Controller
         // dd($cart);
         return view('user.order', compact('listSupplier', 'amount_item', 'item', 'total_qty'));
     }
+    
+    public function item_finded(Request $request) {
+        // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
+        $amount_item = Session('cart') ? Session::get('cart')->totalQty : 0;
+        $listSupplier = $this->supplier->all();
+        $value = $request->item_find;
+        // dd($value);
+        // sản phẩm Giảm Giá nhất
+        $most_sell_Item = DB::table('item')
+                ->join('image', 'item.image_id', '=', 'image.id')
+                ->select('item.*', 'image.image_url')
+                ->orderBy('item_sell', 'desc')
+                ->first();
+
+        $listItem = DB::table('item')
+                ->join('image', 'item.image_id', '=', 'image.id')
+                ->join('system', 'item.system_id', '=', 'system.id')
+                ->join('supplier', 'item.supplier_id', '=', 'supplier.id')
+                ->where('item.item_name', 'like', '%'.$value.'%')
+                ->select('item.*', 'image.image_url', 'supplier.supplier_name', 'system.system_name')
+                ->get();
+        $title = 'Kết Quả Tìm Kiếm';
+
+// dd($listItem);
+        return view('user.category', compact('most_sell_Item', 'listSupplier', 'listItem', 'title', 'amount_item'));
+    }
+
     public function login(){
 
         // nếu đã tồn tại giỏ hàng, lấy số lượng trong giỏ hàng, hoặc trả về 0
