@@ -11,7 +11,7 @@
 							Đơn Thành Công
 						</div>
 						<div class="data">
-							3000
+							<?php echo $order_success->total ?>
 						</div>
 					</div>
 				</div>
@@ -23,7 +23,7 @@
 							Đơn Bị Hủy
 						</div>
 						<div class="data">
-							3000
+							<?php echo $order_remove->total ?>
 						</div>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 							Doanh Thu
 						</div>
 						<div class="data">
-							3000
+							<?php echo number_format($order_prices->total) . " đ" ?>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 							Sản Phẩm Bán Được
 						</div>
 						<div class="data">
-							3000
+							<?php echo number_format($order_item->total) . " đ" ?>
 						</div>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 			<div class="table_wrapper">
 				<div class="title_table">
 					<div class="title_name">
-						Nhập Xuất Tháng Này
+						Đơn Hàng Tháng Này
 					</div>
 				</div>
 				<div class="content_table">
@@ -112,7 +112,7 @@
                 		}
                 	echo "]";
                 ?>,
-            label: 'Nhập Vào'
+            label: 'Đơn Hàng'
         }]
     };
 

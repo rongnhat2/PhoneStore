@@ -20,6 +20,20 @@
 							</div>
 						</div>
 						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Hình Ảnh
+							</div>
+							<div class="input_form image_loader">
+								<label class="W100" data-toggle="modal" data-target="#myModal">
+									<i class="fas fa-upload"></i>
+								</label>
+								<div class="image_loading">
+									<img src="{{ asset($supplier->image_url) }}" >
+								</div>
+								<input type="text" name="image_id" value="{{ asset($supplier->image_id) }}" style="display: none;" required="">
+							</div>
+						</div>
+						<div class="input_wrapper">
 							<div class="input_button">
 								<button class="bg_success text_light">Cập Nhật</button>
 							</div>
@@ -28,7 +42,18 @@
 				</div>
 			</div>
 		</form>
+		<div id="myModal" class="modal fade" role="dialog">
+		  	<div class="modal-dialog">
+		    <!-- Modal content-->
+			    <div class="modal-content">
+			      	<div class="modal-body list_image_library" style="overflow: hidden;">
+
+			      	</div>
+			    </div>
+			</div>
+		</div>
 	</div>
 </div>
+<script src="{{ asset('js/library.js') }}"></script>
 				
 @endsection()

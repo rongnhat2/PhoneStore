@@ -39,25 +39,25 @@
 											<span>Màn Hình</span> <?php echo $item->item_screen ?>
 										</div>
 										<div class="row_wrapper">
-											<span>Camera Sau</span> <?php echo $item->item_bcamera ?>
+											<span>Camera Sau</span> <?php echo $item->item_bcamera ?> ( MP )
 										</div>
 										<div class="row_wrapper">
-											<span>Camera Trước</span> <?php echo $item->item_fcamera ?>
+											<span>Camera Trước</span> <?php echo $item->item_fcamera ?> ( MP )
 										</div>
 										<div class="row_wrapper">
 											<span>CPU</span> <?php echo $item->item_cpu ?>
 										</div>
 										<div class="row_wrapper">
-											<span>Ram</span> <?php echo $item->item_ram ?>
+											<span>Ram</span> <?php echo $item->item_ram ?> ( GB )
 										</div>
 										<div class="row_wrapper">
-											<span>bộ nhớ máy</span> <?php echo $item->item_memory ?>
+											<span>bộ nhớ máy</span> <?php echo $item->item_memory ?> ( GB )
 										</div>
 										<div class="row_wrapper">
-											<span>bộ nhớ ngoài</span> <?php echo $item->item_memorystick ?>
+											<span>bộ nhớ ngoài</span> <?php echo $item->item_memorystick ?> ( GB )
 										</div>
 										<div class="row_wrapper">
-											<span>dung lượng pin</span> <?php echo $item->item_battery ?>
+											<span>dung lượng pin</span> <?php echo $item->item_battery ?> ( mAh )
 										</div>
 									</div>
 									<div class="item_cart">

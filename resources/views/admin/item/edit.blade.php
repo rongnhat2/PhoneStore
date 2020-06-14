@@ -13,92 +13,105 @@
 					<div class="body_form">
 						<div class="input_wrapper">
 							<div class="input_title flexY">
+								Mã Sản Phẩm
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_code" required="" value="<?php echo $item->item_code ?>" readonly>
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
 								Tên Sản Phẩm
 							</div>
 							<div class="input_form">
-								<input type="text" name="item_name" required="" value="<?php echo $items->item_name ?>">
+								<input type="text" name="item_name" required="" value="<?php echo $item->item_name ?>">
 							</div>
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Danh Mục
+								Hệ Điều Hành - Thương Hiệu
 							</div>
 							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-									<div class="select_form">
-										<div class="select_wrapper">
-											<input type="hidden" name="category_index" class="select_index" value="<?php echo $items->category_id ?>">
-											<input type="hidden" name="category_value" class="select_value" value="<?php echo $items->category_name ?>">
-											<div class="select_item"><?php echo $items->category_name ?></div>
-											<div class="select_icon">
-												<i class="fas fa-caret-down"></i>
-											</div>
-											<div class="option_wrapper">
-
-											</div>
-										</div>
-										<select>
-				                			@foreach($categories as $category)
-												<option value="<?php echo $category->id ?>">{{ $category->category_name }}</option>
-				                			@endforeach
-										</select>
-									</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+									<select class="" name="system_id">
+									    <option value=""></option>
+									    <?php foreach ($listSystem as $key => $value): ?>
+									    	<option value="<?php echo $value->id; ?>" {{ ($value->id == $item->system_id) ? 'selected' : '' }}><?php echo $value->system_name; ?></option>
+									    <?php endforeach ?>
+									</select>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+									<select class="" name="supplier_id">
+									    <option value=""></option>
+									    <?php foreach ($listSupplier as $key => $value): ?>
+									    	<option value="<?php echo $value->id; ?>" {{ ($value->id == $item->supplier_id) ? 'selected' : '' }}><?php echo $value->supplier_name; ?></option>
+									    <?php endforeach ?>
+									</select>
 								</div>
 							</div>
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Khối Lượng
+								Kích Thước Màn Hình
 							</div>
 							<div class="input_form">
-								<input type="number" name="item_size" required="" value="<?php echo $items->item_size ?>">
+								<input type="text" name="item_screen" required="" value="<?php echo $item->item_screen ?>">
 							</div>
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Nguồn Gốc - Thương hiệu
+								Camera Trước
 							</div>
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-									<div class="select_form">
-										<div class="select_wrapper">
-											<input type="hidden" name="resource_index" class="select_index" value="<?php echo $items->item_resource ?>">
-											<input type="hidden" name="resource_value" class="select_value" value="<?php echo $items->resource_name ?>">
-											<div class="select_item"><?php echo $items->resource_name ?></div>
-											<div class="select_icon">
-												<i class="fas fa-caret-down"></i>
-											</div>
-											<div class="option_wrapper">
-
-											</div>
-										</div>
-										<select>
-				                			@foreach($resources as $resource)
-												<option value="<?php echo $resource->id ?>">{{ $resource->resource_name }}</option>
-				                			@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-									<div class="select_form">
-										<div class="select_wrapper">
-											<input type="hidden" name="trademark_index" class="select_index" value="<?php echo $items->item_trademark ?>">
-											<input type="hidden" name="trademark_value" class="select_value" value="<?php echo $items->trademark_name ?>">
-											<div class="select_item"><?php echo $items->trademark_name ?></div>
-											<div class="select_icon">
-												<i class="fas fa-caret-down"></i>
-											</div>
-											<div class="option_wrapper">
-
-											</div>
-										</div>
-										<select>
-				                			@foreach($trademarks as $trademark)
-												<option value="<?php echo $trademark->id ?>">{{ $trademark->trademark_name }}</option>
-				                			@endforeach
-										</select>
-									</div>
-								</div>
+							<div class="input_form">
+								<input type="text" name="item_fcamera" required="" pattern="[0-9]*" value="<?php echo $item->item_fcamera ?>">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Camera Sau
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_bcamera" required="" pattern="[0-9]*" value="<?php echo $item->item_bcamera ?>">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								CPU
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_cpu" required="" value="<?php echo $item->item_cpu ?>">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Ram
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_ram" required="" pattern="[0-9]*" value="<?php echo $item->item_ram ?>">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Bộ Nhớ Trong
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_memory" required="" pattern="[0-9]*" value="<?php echo $item->item_memory ?>">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Bộ Nhớ Ngoài
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_memorystick" required="" pattern="[0-9]*" value="<?php echo $item->item_memorystick ?>">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Dung Lượng Pin
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_battery" required="" pattern="[0-9]*" value="<?php echo $item->item_battery ?>">
 							</div>
 						</div>
 						<div class="input_wrapper">
@@ -106,7 +119,7 @@
 								Đơn Giá
 							</div>
 							<div class="input_form">
-								<input type="number" name="item_prices" required="" value="<?php echo $items->item_prices ?>">
+								<input type="text" name="item_price" required="" pattern="[0-9]*" value="<?php echo $item->item_price ?>">
 							</div>
 						</div>
 						<div class="input_wrapper">
@@ -118,18 +131,34 @@
 									<i class="fas fa-upload"></i>
 								</label>
 								<div class="image_loading">
-									<img src="{{ asset($items->item_image) }}" >
+									<img src="{{ asset($item->image_url) }}" >
 								</div>
-								<input type="text" name="item_image" value="<?php echo $items->item_image ?>" style="display: none;">
+								<input type="text" name="image_id" value="<?php echo $item->image_id ?>" style="display: none;" required="">
 							</div>
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Mô Tả
+								Thời Gian Bảo Hàng ( Tháng )
+							</div>
+							<div class="input_form">
+								<input type="text" name="item_guarantee" required="" value="<?php echo $item->item_guarantee ?>" pattern="[0-9]*">
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Mô Tả Ngắn
+							</div>
+							<div class="input_form">
+								<textarea name="item_description" style="min-height: 200px;" required=""><?php echo $item->item_description ?></textarea>
+							</div>
+						</div>
+						<div class="input_wrapper">
+							<div class="input_title flexY">
+								Mô Tả Đầy Đủ
 							</div>
 							<div class="input_form">
 
-								<textarea class="summernote" name="item_detail" style="min-height: 200px;" required=""><?php echo $items->item_detail ?></textarea>
+								<textarea class="summernote" name="item_detail" style="min-height: 200px;" required=""><?php echo $item->item_detail ?></textarea>
 								<script>
 								    $(document).ready(function() {
 								        $('.summernote').summernote();
@@ -150,32 +179,14 @@
 		  	<div class="modal-dialog">
 		    <!-- Modal content-->
 			    <div class="modal-content">
-			      	<div class="modal-body" style="overflow: hidden;">
-						<?php foreach ($gallery as $key => $value): ?>
-							<div class="I-image">
-								<div class="image_wrapper">
-									<img src="{{asset($value->image_url)}}">
-								</div>
-								<div class="image_url">
-									{{asset($value->image_url)}}
-								</div>
-								<div class="image_title">
-									<?php echo $value->image_name ?>
-								</div>
-							</div>
-						<?php endforeach ?>
+			      	<div class="modal-body list_image_library" style="overflow: hidden;">
+
 			      	</div>
 			    </div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			$('.I-image').on('click', function(e){
-				var image = $(this).find('.image_url').text()
-		        $('.image_loading').find('img').attr('src', image)
-		        $('.image_loader').find('input').attr('value', image)
-			})
-		</script>
 	</div>
 </div>
+<script src="{{ asset('js/library.js') }}"></script>
 				
 @endsection()

@@ -68,7 +68,12 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        $supplier = $this->supplier->findOrfail($id);
+        $supplier = DB::table('supplier')
+            ->join('image', 'image.id', '=', 'supplier.image_id')
+            ->where('supplier.id', '=', $id)
+            ->select('supplier.*', 'image.image_url as image_url')
+            ->first();
+            // dd($supplier);
         return view('admin.supplier.edit', compact('supplier'));
     }
 
@@ -92,10 +97,10 @@ class SupplierController extends Controller
             DB::commit();
             return redirect()->route('supplier.index');
         } catch (\Exception $exception) {
-			Session::flash('error', 'Đã Có Lỗi Sảy Ra');
-            return redirect()->route('supplier.index');
-            // dd($exception);
-            // DB::rollBack();
+			// Session::flash('error', 'Đã Có Lỗi Sảy Ra');
+            // return redirect()->route('supplier.index');
+            dd($exception);
+            DB::rollBack();
         }
     }
 

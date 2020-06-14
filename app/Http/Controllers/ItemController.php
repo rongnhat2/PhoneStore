@@ -87,8 +87,15 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        $system = $this->system->findOrfail($id);
-        return view('admin.system.edit', compact('system'));
+        $listSystem = $this->system->all();
+        $listSupplier = $this->supplier->all();
+        $item = DB::table('item')
+            ->join('image', 'image.id', '=', 'item.image_id')
+            ->where('item.id', '=', $id)
+            ->select('item.*', 'image.image_url as image_url')
+            ->first();
+            // dd($item);  
+        return view('admin.item.edit', compact('item', 'listSystem', 'listSupplier'));
     }
 
     /**
@@ -102,16 +109,31 @@ class ItemController extends Controller
         try {
             DB::beginTransaction();
             // update system tabale
-            $this->system->where('id', $id)->update([
-                'system_name' => $request->system_name,
+            $this->item->where('id', $id)->update([
+                'item_guarantee' =>  $request->item_guarantee,
+                'item_name' => $request->item_name,
+                'image_id' => $request->image_id,
+                'system_id' => $request->system_id,
+                'supplier_id' => $request->supplier_id,
+                'item_screen' => $request->item_screen,
+                'item_bcamera' => $request->item_bcamera,
+                'item_fcamera' => $request->item_fcamera,
+                'item_cpu' => $request->item_cpu,
+                'item_ram' => $request->item_ram,
+                'item_memory' => $request->item_memory,
+                'item_memorystick' => $request->item_memorystick,
+                'item_battery' => $request->item_battery,
+                'item_price' => $request->item_price,
+                'item_description' => $request->item_description,
+                'item_detail' => $request->item_detail,
             ]);
 
-            Session::flash('success', 'Cập Nhật Thành Công Danh Mục : ' . $request->system_name);
+            Session::flash('success', 'Cập Nhật Thành Công Sản Phẩm : ' . $request->item_name);
             DB::commit();
-            return redirect()->route('system.index');
+            return redirect()->route('item.index');
         } catch (\Exception $exception) {
 			Session::flash('error', 'Đã Có Lỗi Sảy Ra');
-            return redirect()->route('system.index');
+            return redirect()->route('item.index');
             // dd($exception);
             // DB::rollBack();
         }
@@ -122,15 +144,15 @@ class ItemController extends Controller
         try {
             DB::beginTransaction();
             // Delete system
-            $system = $this->system->find($id);
-            $system->delete($id);
-            Session::flash('success', 'Đã Xóa Danh Mục : ' . $system->system_name);
+            $item = $this->item->find($id);
+            $item->delete($id);
+            Session::flash('success', 'Đã Xóa Danh Mục : ' . $item->item_name);
 
             DB::commit();
-            return redirect()->route('system.index');
+            return redirect()->route('item.index');
         } catch (\Exception $exception) {
 			Session::flash('error', 'Đã Có Lỗi Sảy Ra');
-            return redirect()->route('system.index');
+            return redirect()->route('item.index');
             // dd($exception);
             // DB::rollBack();
         }

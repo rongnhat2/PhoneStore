@@ -45,6 +45,11 @@ Route::post('/loginAdmin', 'CustomerController@adminpostLogin')->name('login');
 
 Route::middleware(['checkacl:admin'], ['auth'])->group(function () {
 
+    // modulle statistical
+    Route::prefix('statistical')->group(function () {
+        Route::get('/', 'StatisticalController@index')->name('statistical.index');
+    });
+
     // modulle guarantee
     Route::prefix('guarantee')->group(function () {
         Route::get('/', 'GuaranteeController@index')->name('guarantee.index');

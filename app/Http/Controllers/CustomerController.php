@@ -255,7 +255,7 @@ class CustomerController extends Controller
                         'total_price' => $request->totalPrice,
                         'status' => '0',
                         "created_at"        =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
-                        "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+                        "updated_at"        => \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString(),
                     ]);
                     for ($i=0; $i < count($request->item); $i++) { 
                         $getItem = DB::table('item')->where('item.id', '=', $request->item[$i])->first();

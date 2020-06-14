@@ -60,7 +60,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Camera Trước
+								Camera Trước ( MP )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_fcamera" required="" pattern="[0-9]*">
@@ -68,7 +68,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Camera Sau
+								Camera Sau ( MP )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_bcamera" required="" pattern="[0-9]*">
@@ -84,7 +84,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Ram
+								Ram ( GB )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_ram" required="" pattern="[0-9]*">
@@ -92,7 +92,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Bộ Nhớ Trong
+								Bộ Nhớ Trong ( GB )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_memory" required="" pattern="[0-9]*">
@@ -100,7 +100,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Bộ Nhớ Ngoài
+								Bộ Nhớ Ngoài ( GB )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_memorystick" required="" pattern="[0-9]*">
@@ -108,7 +108,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Dung Lượng Pin
+								Dung Lượng Pin ( mAh )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_battery" required="" pattern="[0-9]*">
@@ -116,7 +116,7 @@
 						</div>
 						<div class="input_wrapper">
 							<div class="input_title flexY">
-								Đơn Giá
+								Đơn Giá  ( VND )
 							</div>
 							<div class="input_form">
 								<input type="text" name="item_price" required="" pattern="[0-9]*">
@@ -141,7 +141,7 @@
 								Thời Gian Bảo Hàng ( Tháng )
 							</div>
 							<div class="input_form">
-								<input type="text" name="item_guarantee" required="">
+								<input type="text" name="item_guarantee" required="" pattern="[0-9]*">
 							</div>
 						</div>
 						<div class="input_wrapper">
